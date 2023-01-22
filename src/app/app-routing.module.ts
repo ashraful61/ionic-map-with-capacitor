@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'follow-horoscope-readers',
+    loadChildren: () => import('./follow-horoscope-readers/follow-horoscope-readers.module').then( m => m.FollowHoroscopeReadersPageModule)
+  },
 ];
 
 @NgModule({

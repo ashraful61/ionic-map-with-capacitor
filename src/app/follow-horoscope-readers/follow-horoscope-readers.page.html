@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="map-content">
+  <ion-button (click)="focusMeOnMap()">Focus me</ion-button>
+  <agm-map
+    #googleMap
+    style="height: 100%"
+    [latitude]="lat"
+    [longitude]="lng"
+    [zoom]="zoom"
+    [disableDefaultUI]="false"
+    [zoomControl]="true"
+    [mapTypeControl]="true"
+  >
+    <agm-marker-cluster imagePath="../../../../assets/images/map-img/m">
+      <agm-marker
+        *ngFor="let m of markers; let i = index"
+        [latitude]="m.lat"
+        [longitude]="m.lng"
+        [label]="m?.label"
+        [markerDraggable]="m.draggable"
+      >
+        <agm-info-window>
+          <strong>{{m?.label}}</strong>
+        </agm-info-window>
+      </agm-marker>
+    </agm-marker-cluster>
+  </agm-map>
+</ion-content>
